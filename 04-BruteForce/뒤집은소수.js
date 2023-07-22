@@ -3,7 +3,7 @@ function solution(arr) {
   const array = [];
   for (let i = 0; i < arr.length; i++) {
     const reverse = parseInt(String(arr[i]).split('').reverse().join(''));
-    if (isPrime(reverse) && reverse !== 1) {
+    if (isPrime(reverse)) {
       array.push(reverse);
     }
   }
@@ -12,9 +12,10 @@ function solution(arr) {
 }
 
 function isPrime(num) {
+  if (num === 1) return false;
   if (num === 2) return true;
 
-  for (let i = 2; i <= num / 2; i++) {
+  for (let i = 2; i <= parseInt(Math.sqrt(num)); i++) {
     if (num % i === 0) {
       return false;
     }
