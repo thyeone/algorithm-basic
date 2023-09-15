@@ -3,14 +3,15 @@ function solution(board, moves) {
   let answer = 0;
 
   for (let i = 0; i < moves.length; i++) {
+    if (stack[stack.length - 1] === stack[stack.length - 2]) {
+      stack.pop() && answer++;
+      stack.pop() && answer++;
+    }
     for (let j = 0; j < board.length; j++) {
       if (board[j][moves[i] - 1] !== 0) {
         stack.push(board[j][moves[i] - 1]);
         board[j][moves[i] - 1] = 0;
         break;
-      } else if (stack[stack.length - 1] === stack[stack.length - 2]) {
-        stack.pop() && answer++;
-        stack.pop() && answer++;
       }
     }
   }
