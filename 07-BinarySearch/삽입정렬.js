@@ -1,10 +1,14 @@
 // 내가 짠 삽입정렬
 function solution(arr) {
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > arr[i + 1]) [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-    for (let j = i; j > 0; j--) {
-      if (arr[j - 1] > arr[j]) [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
+    let currentElement = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j] > currentElement) {
+      arr[j + 1] = arr[j];
+      j--;
     }
+    arr[j + 1] = currentElement;
   }
 
   return arr;
@@ -27,4 +31,4 @@ function solution1(arr) {
 }
 
 let arr = [11, 7, 5, 6, 10, 9];
-console.log(solution1(arr));
+console.log(solution(arr));
